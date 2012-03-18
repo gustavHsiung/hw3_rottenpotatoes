@@ -2,7 +2,7 @@
 
 Given /the following movies exist/ do |movies_table|
   movies_table.hashes.each do |movie|
-   Movie.new(movie)
+   @movie = Movie.new(movie)
   end
 end
 
