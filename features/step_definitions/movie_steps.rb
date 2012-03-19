@@ -10,6 +10,7 @@ Then /I should see only movies from ratings: (.*)/ do |ratings|
   @selected_rating = ratings.split(/\W+/)
   puts @selected_rating
   @movies = Movie.all
+  puts @movies.length
   @movies.each do |movie|
     puts @movie.title
     if @selected_rating.include? movie.rating
