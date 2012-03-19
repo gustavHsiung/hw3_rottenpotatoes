@@ -15,9 +15,9 @@ Then /I should see only movies from ratings: (.*)/ do |ratings|
     puts @movie.title
     if @selected_rating.include? movie.rating
       puts "I should see"
-      setp %Q{I should see "#{movie.title}"}
+      step %Q{I should see "#{movie.title}"}
     else
-      setp %Q{I should not see "#{movie.title}"}
+      step %Q{I should not see "#{movie.title}"}
     end
   end
   all("table#movies tr").count.should == Movie.where(:rating => @selected_rating).size
