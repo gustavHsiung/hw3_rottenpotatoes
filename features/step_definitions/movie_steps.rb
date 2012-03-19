@@ -52,7 +52,7 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
 end
 
-When /I check all ratings/
+When /I check all ratings/ do
 
   Movie.all_ratings.each do |rating|
      step %Q{I check "ratings_#{rating}"}
