@@ -36,6 +36,9 @@ end
 
 # Make sure that one string (regexp) occurs before or after another one
 #   on the same page
+When /I click  "(.*)" / do |sort|
+    step %Q{I follow "#{sort}"}
+end
 
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
