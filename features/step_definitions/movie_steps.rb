@@ -3,7 +3,6 @@
 Given /the following movies exist/ do |movies_table|
   movies_table.hashes.each do |movie|
    @movie = Movie.new(movie)
-   puts @movie.title
   end
 end
 
@@ -12,6 +11,7 @@ Then /I should see only movies from ratings: (.*)/ do |ratings|
   @movies = Movie.all
   @movies.each do |movie|
     if @selected_rating.include? movie.rating
+      puts @movie.title
       setp %Q{I should see "#{movie.title}"}
     else
       setp %Q{I should not see "#{movie.title}"}
