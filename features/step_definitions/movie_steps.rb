@@ -6,6 +6,14 @@ Given /the following movies exist/ do |movies_table|
   end
 end
 
+Given /I check the following ratings:/ do |ratings|
+  ratings.each do |rating|
+    Given %Q{I check "ratings[#{rating}]"}
+end
+
+Then /I should see only movies from ratings:/ do |ratings|
+  
+end
 # Make sure that one string (regexp) occurs before or after another one
 #   on the same page
 
