@@ -11,9 +11,9 @@ Then /I should see only movies from ratings: (.*)/ do |ratings|
   @movies = Movie.all
   @movies.each do |movie|
     if @selected_rating.include? movie.rating
-      setp %{I should see "#{movie.title}"}
+      setp %Q{I should see "#{movie.title}"}
     else
-      setp %{I should not see "#{movie.title}"}
+      setp %Q{I should not see "#{movie.title}"}
     end
   end
   all("table#movies tr").count.should == value
@@ -22,7 +22,7 @@ end
 Then /I should see all of the movies/
   @movies = Movie.all
   @movies.each do |movie|
-    setp %{I should see "#{movie.title}"}
+    setp %Q{I should see "#{movie.title}"}
   end
 end
 # Make sure that one string (regexp) occurs before or after another one
