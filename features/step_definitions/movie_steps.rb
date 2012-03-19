@@ -16,7 +16,7 @@ Then /I should see only movies from ratings: (.*)/ do |ratings|
       setp %Q{I should not see "#{movie.title}"}
     end
   end
-  all("table#movies tr").count.should == value
+  all("table#movies tr").count.should == Movie.where(:rating => @selected_rating).size
 end
 #
 #Then /I should see all of the movies/
