@@ -6,8 +6,24 @@ Given /the following movies exist/ do |movies_table|
   end
 end
 
-Then /I should see only movies from ratings:/ do |ratings|
-  
+Then /I should see only movies from ratings: (.*)/ do |ratings|
+  @selected_rating = rating_list.split(/\W+/)
+  @movies = Movie.all
+  @movies.each do |movie|
+    if @selected_rating.include? movie.rating
+      setp %{I should see "#{movie.title}"}
+    else
+      setp %{I should not see "#{movie.title}"}
+    end
+  end
+  all("table#movies tr").count.should == value
+end
+
+Then /I should see all of the movies/
+  @movies = Movie.all
+  @movies.each do |movie|
+    setp %{I should see "#{movie.title}"}
+  end
 end
 # Make sure that one string (regexp) occurs before or after another one
 #   on the same page
