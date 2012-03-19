@@ -11,8 +11,9 @@ Then /I should see only movies from ratings: (.*)/ do |ratings|
   puts @selected_rating
   @movies = Movie.all
   @movies.each do |movie|
+    puts @movie.title
     if @selected_rating.include? movie.rating
-      puts @movie.title
+      puts "I should see"
       setp %Q{I should see "#{movie.title}"}
     else
       setp %Q{I should not see "#{movie.title}"}
