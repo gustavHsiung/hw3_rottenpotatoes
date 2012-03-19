@@ -25,14 +25,12 @@ Scenario: restrict to movies with 'PG' or 'R' ratings
   Given I check the following ratings: PG, R
   And I press "ratings_submit"
   Then I should see only movies from ratings: PG, R 
-  # enter step(s) to check the 'PG' and 'R' checkboxes
-  # enter step(s) to uncheck all other checkboxes
-  # enter step to "submit" the search form on the homepage
-  # enter step(s) to ensure that PG and R movies are visible
-  # enter step(s) to ensure that other movies are not visible
-
+ 
 Scenario: no ratings selected
   # see assignment
 
 Scenario: all ratings selected
-  # see assignment
+  Given I check all ratings
+  And I press "ratings_submit"
+  Then I should see all of the movies
+ 

@@ -8,9 +8,7 @@ end
 
 Then /I should see only movies from ratings: (.*)/ do |ratings|
   @selected_rating = ratings.split(/\W+/)
-  puts @selected_rating
   @movies = Movie.all
-  puts @movies.length
   @movies.each do |movie|
     if @selected_rating.include? movie.rating
       step %Q{I should see "#{movie.title}"}
@@ -20,13 +18,15 @@ Then /I should see only movies from ratings: (.*)/ do |ratings|
   end
   all("table#movies/tbody tr").count.should == Movie.where(:rating => @selected_rating).size
 end
-#
-#Then /I should see all of the movies/
-#  @movies = Movie.all
-#  @movies.each do |movie|
-#    setp %Q{I should see "#{movie.title}"}
-#  end
-#end
+
+Then /I should see all of the movies/
+  @movies = Movie.all
+  @movies.each do |movie|
+    setp %Q{I should see "#{movie.title}"}
+  end
+  all("table#movies/tbody tr").count.should == @movies.length
+  
+end
 
 # Make sure that one string (regexp) occurs before or after another one
 #   on the same page
@@ -50,4 +50,12 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   # HINT: use String#split to split up the rating_list, then
   #   iterate over the ratings and reuse the "When I check..." or
   #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
+end
+
+When /I check all ratings/
+
+  Movie.all_ratings.each do |rating|
+     step %Q{I check "ratings_#{rating}"}
+   end
+
 end
