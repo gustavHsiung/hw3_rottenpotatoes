@@ -42,7 +42,7 @@ end
 
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
 
-  put page.body =~ /.*#{e1}.*#{e2}.*/
+  puts page.body =~ /.*#{e1}.*#{e2}.*/
  
 end
 
