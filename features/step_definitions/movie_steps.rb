@@ -3,6 +3,7 @@
 Given /the following movies exist/ do |movies_table|
   movies_table.hashes.each do |movie|
    @movie = Movie.new(movie)
+   puts @movie.title
   end
 end
 
@@ -16,7 +17,7 @@ Then /I should see only movies from ratings: (.*)/ do |ratings|
       setp %Q{I should not see "#{movie.title}"}
     end
   end
-  all("table#movies tr").count.should == Movie.where(:rating => @selected_rating).size
+  Movie.where(:rating => @selected_rating).size.should == all("table#movies tr").count  
 end
 #
 #Then /I should see all of the movies/
