@@ -36,7 +36,7 @@ end
 
 # Make sure that one string (regexp) occurs before or after another one
 #   on the same page
-Given /I click  "(.*)" / do |sort|
+Given /I click "(.*)"/ do |sort|
     step %Q{I follow "#{sort}"}
 end
 
