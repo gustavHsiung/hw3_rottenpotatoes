@@ -7,7 +7,7 @@ Given /the following movies exist/ do |movies_table|
 end
 
 Then /I should see only movies from ratings: (.*)/ do |ratings|
-  @selected_rating = rating_list.split(/\W+/)
+  @selected_rating = ratings.split(/\W+/)
   @movies = Movie.all
   @movies.each do |movie|
     if @selected_rating.include? movie.rating
