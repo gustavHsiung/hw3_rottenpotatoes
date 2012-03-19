@@ -27,7 +27,9 @@ Scenario: restrict to movies with 'PG' or 'R' ratings
   Then I should see only movies from ratings: PG, R 
  
 Scenario: no ratings selected
-  # see assignment
+  Given I uncheck all ratings
+  And I press "ratings_submit"
+  Then I should see none of the movies
 
 Scenario: all ratings selected
   Given I check all ratings

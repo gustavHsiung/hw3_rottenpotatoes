@@ -22,12 +22,17 @@ end
 Then /I should see all of the movies/ do
   @movies = Movie.all
   @movies.each do |movie|
-    setp %Q{I should see "#{movie.title}"}
+    step %Q{I should see "#{movie.title}"}
   end
   all("table#movies/tbody tr").count.should == @movies.length
   
 end
 
+Then /I should see none of the movies/ do
+  
+  all("table#movies/tbody tr").count.should == 0
+  
+end
 # Make sure that one string (regexp) occurs before or after another one
 #   on the same page
 
@@ -52,10 +57,14 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
 end
 
-When /I check all ratings/ do
-
-  Movie.all_ratings.each do |rating|
-     step %Q{I check "ratings_#{rating}"}
-   end
-
+When /I (un)?check all ratings/ do |uncheck|
+  if uncheck
+    Movie.all_ratings.each do |rating|
+      step %Q{I uncheck "ratings_#{rating}"}
+    end    
+  else
+    Movie.all_ratings.each do |rating|
+      step %Q{I check "ratings_#{rating}"}
+    end
+  end
 end
