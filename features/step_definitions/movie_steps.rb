@@ -18,13 +18,14 @@ Then /I should see only movies from ratings: (.*)/ do |ratings|
   end
   all("table#movies tr").count.should == value
 end
+#
+#Then /I should see all of the movies/
+#  @movies = Movie.all
+#  @movies.each do |movie|
+#    setp %Q{I should see "#{movie.title}"}
+#  end
+#end
 
-Then /I should see all of the movies/
-  @movies = Movie.all
-  @movies.each do |movie|
-    setp %Q{I should see "#{movie.title}"}
-  end
-end
 # Make sure that one string (regexp) occurs before or after another one
 #   on the same page
 
