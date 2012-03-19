@@ -33,13 +33,22 @@ Then /I should see none of the movies/ do
   all("table#movies/tbody tr").count.should == 0
   
 end
+
 # Make sure that one string (regexp) occurs before or after another one
 #   on the same page
 
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.content  is the entire content of the page as a string.
-  assert false, "Unimplmemented"
+#  table = all("table#movies/tbody tr")
+#  table.each.with_index do |row, index|
+#      row.each do |column|
+#        column.include?(e1)
+#      end
+#    end
+   if page.body =~ e1 <= page.body =~ e2
+     assert false, "Error"
+     
 end
 
 # Make it easier to express checking or unchecking several boxes at once
