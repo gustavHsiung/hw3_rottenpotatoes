@@ -46,9 +46,9 @@ Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
 #        column.include?(e1)
 #      end
 #    end
-   if page.body =~ e1 <= page.body =~ e2
+  if (page.body =~ e1) <= (page.body =~ e2)
      assert false, "Error"
-     
+  end 
 end
 
 # Make it easier to express checking or unchecking several boxes at once
