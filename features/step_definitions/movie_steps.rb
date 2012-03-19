@@ -6,12 +6,6 @@ Given /the following movies exist/ do |movies_table|
   end
 end
 
-Given /I check the following ratings:/ do |ratings|
-  ratings.each do |rating|
-    Given %Q{I check "ratings[#{rating}]"}
-  end  
-end
-
 Then /I should see only movies from ratings:/ do |ratings|
   
 end
@@ -29,6 +23,11 @@ end
 #  "When I check the following ratings: G"
 
 When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
+  
+  ratings = rating_list.split(",")
+  ratings.each do |rating|
+     Given %Q{I check "ratings[#{rating}]"}
+   end
   # HINT: use String#split to split up the rating_list, then
   #   iterate over the ratings and reuse the "When I check..." or
   #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
