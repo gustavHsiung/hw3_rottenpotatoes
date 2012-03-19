@@ -9,6 +9,7 @@ end
 Given /I check the following ratings:/ do |ratings|
   ratings.each do |rating|
     Given %Q{I check "ratings[#{rating}]"}
+  end  
 end
 
 Then /I should see only movies from ratings:/ do |ratings|
