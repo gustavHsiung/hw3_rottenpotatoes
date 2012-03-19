@@ -41,15 +41,8 @@ Given /I click "(.*)"/ do |sort|
 end
 
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
-  #  ensure that that e1 occurs before e2.
-  #  page.content  is the entire content of the page as a string.
-#  table = all("table#movies/tbody tr")
-#  table.each.with_index do |row, index|
-#      row.each do |column|
-#        column.include?(e1)
-#      end
-#    end
-  if (page.body =~ e1) <= (page.body =~ e2)
+
+  if((page.body =~ e1) <= (page.body =~ e2))
      assert false, "Error"
   end 
 end
