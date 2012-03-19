@@ -12,15 +12,13 @@ Then /I should see only movies from ratings: (.*)/ do |ratings|
   @movies = Movie.all
   puts @movies.length
   @movies.each do |movie|
-    puts @movie.title
     if @selected_rating.include? movie.rating
-      puts "I should see"
       step %Q{I should see "#{movie.title}"}
     else
       step %Q{I should not see "#{movie.title}"}
     end
   end
-  all("table#movies tr").count.should == Movie.where(:rating => @selected_rating).size
+  all("table#movies/tbody tr").count.should == Movie.where(:rating => @selected_rating).size
 end
 #
 #Then /I should see all of the movies/
