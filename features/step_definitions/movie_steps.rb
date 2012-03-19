@@ -24,7 +24,7 @@ end
 
 When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   
-  ratings = rating_list.split(",")
+  ratings = rating_list.split(/\W+/)
   ratings.each do |rating|
      step %Q{I check "ratings_#{rating}"}
    end
