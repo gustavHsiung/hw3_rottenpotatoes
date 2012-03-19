@@ -42,9 +42,8 @@ end
 
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
 
-  if((page.body =~ e1) <= (page.body =~ e2))
-     assert false, "Error"
-  end 
+  page.body.should =~ /#{e1}.*#{e2}/
+ 
 end
 
 # Make it easier to express checking or unchecking several boxes at once
