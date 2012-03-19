@@ -19,7 +19,7 @@ Then /I should see only movies from ratings: (.*)/ do |ratings|
   all("table#movies/tbody tr").count.should == Movie.where(:rating => @selected_rating).size
 end
 
-Then /I should see all of the movies/
+Then /I should see all of the movies/ do
   @movies = Movie.all
   @movies.each do |movie|
     setp %Q{I should see "#{movie.title}"}
